@@ -1,0 +1,26 @@
+services:
+    tyrghen.fixedtopmenu.listener:
+        class: tyrghen\fixedtopmenu\event\listener
+        arguments:
+            - '@user'
+            - '@language'
+            - '@auth'
+            - '@request'
+            - '@config'
+            - '@config_text'
+            - '@template'
+            - '@dispatcher'
+            - '@controller.helper'
+        tags:
+            - { name: event.listener }
+
+    tyrghen.fixedtopmenu.controller.acp:
+        class: tyrghen\fixedtopmenu\controller\acp_controller
+        arguments:
+            - '@config'
+            - '@config_text'
+            - '@language'
+            - '@log'
+            - '@request'
+            - '@template'
+            - '@user'

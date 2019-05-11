@@ -1,0 +1,49 @@
+{% INCLUDECSS '@tyrghen_fixedtopmenu/fixedtopmenu.css' %}
+{% if topmenu_debug %}<!-- {{ topmenu_debug }} -->{% endif %}
+	{% set countItems = 0 %}
+	<a id="top" class="top-anchor" accesskey="t"></a>
+	<div id="page-header">
+		<div class="headerbar fixed-top" role="banner">
+		<div class="headerbar-container">
+			<!-- EVENT overall_header_headerbar_before -->
+			<div class="inner container">
+			
+			<nav id="mainMenu" class="navbar navbar-expand-md" role="navigation">
+				<a class="navbar-brand" href="<!-- IF U_SITE_HOME -->{U_SITE_HOME}<!-- ELSE -->{U_INDEX}<!-- ENDIF -->" title="<!-- IF U_SITE_HOME -->{L_SITE_HOME}<!-- ELSE -->{L_INDEX}<!-- ENDIF -->">
+					<img src="{T_THEME_PATH}/images/site_logo.png" width="40" height="30" alt="">
+					{{ topmenu_brand }}
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						{% for menu_item in topmenu_items %}
+						{% if menu_item.subitems %}				
+						<li class="nav-item dropdown-container {% if menu_item.active %} active {% endif %}">
+							<a class="nav-link dropdown-toggle" href="#" id="{{'navbarDropdown' ~ countItems}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ menu_item.name }}</a>
+							<div class="dropdown-menu" aria-labelledby="{{'navbarDropdown' ~ countItems}}">
+							{% for sub_item in menu_item.subitems %}
+							{% if sub_item.link %}
+							<a class="dropdown-item" href="{{ sub_item.link }}">{{ sub_item.name }}</a>
+							{% else %}
+							<div class="dropdown-divider"></div>
+							{% endif %}
+							{% set countItems = countItems + 1 %}
+							{% endfor %}
+							</div>
+						</li>
+						{% else %}
+						<li class="nav-item {% if menu_item.active %}active{% endif %}"><a class="nav-link" href="{{ menu_item.link }}">{{ menu_item.name }}</a></li>
+						{% endif %}
+						{% set countItems = countItems + 1 %}
+						{% endfor %}
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</nav>
+			</div>
+			<!-- EVENT overall_header_headerbar_after -->
+		</div>
+		</div>
+	</div>

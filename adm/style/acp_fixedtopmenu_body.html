@@ -1,0 +1,42 @@
+{% include 'overall_header.html' %}
+
+<h1>{{ lang('ACP_TFIXEDTOPMENU_TITLE') }}</h1>
+
+{% if S_ERROR %}
+	<div class="errorbox">
+		<h3>{{ lang('WARNING') }}</h3>
+		<p>{{ ERROR_MSG }}</p>
+	</div>
+{% endif %}
+
+<form id="tyrghen_fixedtopmenu_acp" name="tyrghen_fixedtopmenu_acp" method="post" action="{{ U_ACTION }}">
+
+	<fieldset>
+		<legend>{{ lang('SETTINGS') }}</legend>
+		<dl>
+			<dt><label for="tyrghen_fixedtopmenu_active">{{ lang('ACP_TFIXEDTOPMENU_ISACTIVE') ~ lang('COLON') }}</label></dt>
+			<dd><label><input type="radio" class="radio" name="tyrghen_fixedtopmenu_active" value="1"{% if TYRGHEN_TFIXEDTOPMENU_ISACTIVE %} checked="checked"{% endif %} /> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="tyrghen_fixedtopmenu_active" value="0"{% if not TYRGHEN_TFIXEDTOPMENU_ISACTIVE %} checked="checked"{% endif %} /> {{ lang('NO') }}</label></dd>
+		</dl>
+		<dl>
+			<dt><label for="tyrghen_fixedtopmenu_debug">{{ lang('ACP_TFIXEDTOPMENU_DEBUG') ~ lang('COLON') }}</label></dt>
+			<dd><label><input type="radio" class="radio" name="tyrghen_fixedtopmenu_debug" value="1"{% if TYRGHEN_TFIXEDTOPMENU_DEBUG %} checked="checked"{% endif %} /> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="tyrghen_fixedtopmenu_debug" value="0"{% if not TYRGHEN_TFIXEDTOPMENU_DEBUG %} checked="checked"{% endif %} /> {{ lang('NO') }}</label></dd>
+		</dl>
+		<dl>
+			<dt><label for="tyrghen_fixedtopmenu_brand">{{ lang('ACP_TFIXEDTOPMENU_BRAND') ~ lang('COLON') }}</label></dt>
+			<dd><input type="text" name="tyrghen_fixedtopmenu_brand" value="{{ TYRGHEN_TFIXEDTOPMENU_BRAND }}"/></dd>
+		</dl>
+		<dl>
+			<dt><label for="tyrghen_fixedtopmenu_content">{{ lang('ACP_TFIXEDTOPMENU_CONTENT') ~ lang('COLON') }}</label></dt>
+			<dd><textarea name="tyrghen_fixedtopmenu_content" id="tyrghen_fixedtopmenu_content" rows="5" cols="40">{{ TYRGHEN_TFIXEDTOPMENU_CONTENT }}</textarea></dd>
+		</dl>
+	</fieldset>
+
+	<fieldset class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />
+		{{ S_FORM_TOKEN }}
+	</fieldset>
+</form>
+
+{% include 'overall_footer.html' %}
