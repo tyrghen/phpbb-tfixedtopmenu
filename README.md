@@ -27,8 +27,8 @@ Each subitem needs to start with two spaces.
 Example:  
 Forum rules|https://yourdomain.com/viewtopic.php?f=1&t=2  
 Our founders  
-  John Smith|https://yourdomain.com/viewtopic.php?f=2&t=1  
-  Bob Smith|https://yourdomain.com/viewtopic.php?f=2&t=2  
+      John Smith|https://yourdomain.com/viewtopic.php?f=2&t=1  
+      Bob Smith|https://yourdomain.com/viewtopic.php?f=2&t=2  
 Last News|https://yourdomain.com/app.php/tnewspage  
 
 ## License
